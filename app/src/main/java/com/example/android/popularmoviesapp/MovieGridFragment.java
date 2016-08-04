@@ -1,15 +1,19 @@
 package com.example.android.popularmoviesapp;
 
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ProgressBar;
 
 import com.example.android.popularmoviesapp.Model.Movie;
 
@@ -19,6 +23,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -29,6 +34,8 @@ public class MovieGridFragment extends Fragment {
 
     ArrayList<Movie> movieList;
     GridView gridView;
+    ProgressBar progressBar;
+    PosterGridAdapter posterGridAdapter;
 
     public MovieGridFragment() {
        movieList = new ArrayList<Movie>();
@@ -46,16 +53,37 @@ public class MovieGridFragment extends Fragment {
         View rootView =  inflater.inflate(R.layout.fragment_movie_grid, container, false);
 
          gridView = (GridView) rootView.findViewById(R.id.movieGridView);
-        new fetchMovieData().execute();
+        progressBar = (ProgressBar) rootView.findViewById(R.id.progressBar);
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie selectedMovie = posterGridAdapter.getItem(position);
+                Intent intent = new Intent(getActivity(), MovieDetailActivity.class);
+                intent.putExtra("Movie", (Serializable) selectedMovie);
+                startActivity(intent);
+                //getActivity().overridePendingTransition(R.anim.pull_in_left, R.anim.pull_out_right);
+
+            }
+        });
+        if (movieList.size() == 0) {
+            new fetchMovieData().execute();
+        }
+
 
         return rootView;
     }
 
     private class fetchMovieData extends AsyncTask<String, String, ArrayList<Movie>> {
         String LOG_TAG = this.getClass().getSimpleName();
-
         @Override
         protected ArrayList<Movie> doInBackground(String... params) {
+            Thread.currentThread();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             HttpURLConnection urlConnection = null;
             BufferedReader reader = null;
 
@@ -129,9 +157,11 @@ public class MovieGridFragment extends Fragment {
                 if (movieList.size() > 0) {
                     movieList.clear();
                 }
-                PosterGridAdapter adapter = new PosterGridAdapter(getContext(), movies);
-                gridView.setAdapter(adapter);
+                posterGridAdapter = new PosterGridAdapter(getContext(), movies);
+                gridView.setAdapter(posterGridAdapter);
                 movieList = movies;
+                gridView.setVisibility(View.VISIBLE);
+                progressBar.setVisibility(View.GONE);
             }
         }
     }
