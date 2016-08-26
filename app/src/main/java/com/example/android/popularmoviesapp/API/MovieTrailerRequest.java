@@ -3,6 +3,10 @@ package com.example.android.popularmoviesapp.API;
 import android.net.Uri;
 import android.util.Log;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -83,14 +87,28 @@ public class MovieTrailerRequest {
             e.printStackTrace();
         }
 
-
-        return parseVideoIdFromJson(resultJsonStr);
+        Log.d("MovieTrailerRequest", resultJsonStr);
+        try {
+            return parseVideoIdFromJson(resultJsonStr);
+        } catch (JSONException e) {
+            Log.d("JSON ERROR", e.getMessage());
+            return null;
+        }
 
     }
 
-    private String parseVideoIdFromJson(String jsonStr){
+    private String parseVideoIdFromJson(String jsonStr) throws JSONException{
+        String TMD_ITEMS = "items";
 
-        return "gtTfd6tISfw";
+        JSONObject result = new JSONObject(jsonStr);
+        JSONArray itemsArray = result.getJSONArray(TMD_ITEMS);
+
+        JSONObject firstItemIds = (JSONObject) itemsArray.getJSONObject(0).get("id");
+        String videoId = firstItemIds.getString("videoId");
+
+        Log.d("MovieTrailerRequest", "video id = " + videoId);
+
+        return videoId;
 
     }
 

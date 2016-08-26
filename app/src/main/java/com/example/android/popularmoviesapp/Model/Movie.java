@@ -5,7 +5,7 @@ import java.io.Serializable;
 /**
  * Created by fst on 2016-05-26.
  */
-public class Movie implements Serializable{
+public class Movie  implements Serializable{
     String title;
     String imageUrl;
     String plot;

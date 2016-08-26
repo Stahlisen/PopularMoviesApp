@@ -5,4 +5,14 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
     <string name="title_activity_testacitivty">testacitivty</string>
+
+    <string-array name="themoviedb_api_show">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+
+    </string-array>
+    <string name="title_activity_start">StartActivity</string>
 </resources>

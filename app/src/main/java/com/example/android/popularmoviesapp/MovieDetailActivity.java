@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -46,16 +47,15 @@ public class MovieDetailActivity extends AppCompatActivity implements IFetchMovi
         ImageView imgView = (ImageView) findViewById(R.id.toolbarImage);
         Picasso.with(this).load("http://image.tmdb.org/t/p/w500/" + detailMovie.getImageUrl()).into(imgView);
 
-        TextView floatRatingButtonText = (TextView) findViewById(R.id.floatRating_text);
+        /*TextView floatRatingButtonText = (TextView) findViewById(R.id.floatRating_text);
         Double ratingDouble = Double.parseDouble(detailMovie.getRating());
         Double roundedRatingDouble = new BigDecimal(ratingDouble).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
         floatRatingButtonText.setText(roundedRatingDouble.toString());
+        */
 
-        ImageView playButton = (ImageView) findViewById(R.id.secondImage);
-        int color = Color.parseColor("#FF4081");
-        playButton.setColorFilter(color);
+        FloatingActionButton playTrailerButton = (FloatingActionButton) findViewById(R.id.fab_play_button);
 
-        playButton.setOnClickListener(new View.OnClickListener() {
+        playTrailerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 

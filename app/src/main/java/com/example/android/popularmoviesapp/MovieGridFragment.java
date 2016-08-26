@@ -36,6 +36,7 @@ public class MovieGridFragment extends Fragment {
     GridView gridView;
     ProgressBar progressBar;
     PosterGridAdapter posterGridAdapter;
+    FetchMovieData fetcher;
 
     public MovieGridFragment() {
        movieList = new ArrayList<Movie>();
@@ -44,6 +45,7 @@ public class MovieGridFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fetcher = new FetchMovieData();
     }
 
     @Override
@@ -66,18 +68,22 @@ public class MovieGridFragment extends Fragment {
 
             }
         });
-        if (movieList.size() == 0) {
-            new fetchMovieData().execute();
-        }
 
+        String type = getArguments().getString("showType");
+        movieList = new ArrayList<Movie>();//((MainActivity)getActivity()).getShowsData(type);
+
+        Log.d(getClass().getSimpleName(), Integer.toString(movieList.size()));
+        posterGridAdapter = new PosterGridAdapter(getContext(), movieList);
+        gridView.setAdapter(posterGridAdapter);
 
         return rootView;
     }
 
-    private class fetchMovieData extends AsyncTask<String, String, ArrayList<Movie>> {
+    private class FetchMovieData extends AsyncTask<String, String, ArrayList<Movie>> {
         String LOG_TAG = this.getClass().getSimpleName();
         @Override
         protected ArrayList<Movie> doInBackground(String... params) {
+            Log.d("MovieGridFragment", "Starting callout");
             Thread.currentThread();
             try {
                 Thread.sleep(1000);
@@ -147,7 +153,6 @@ public class MovieGridFragment extends Fragment {
                 }
             }
 
-
             return movieList;
         }
 
@@ -162,10 +167,16 @@ public class MovieGridFragment extends Fragment {
                 movieList = movies;
                 gridView.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
+                Log.d("MovieGridFragment", "Callout onPostExecute");
+
             }
         }
     }
 
-
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("MovieGridFragment", "onResume()");
+        //fetcher.execute();
+    }
 }

@@ -32,17 +32,6 @@
                 app:layout_collapseMode="parallax"
                 />
 
-            <ImageView
-                android:id="@+id/secondImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:src="@drawable/ic_play_arrow"
-                android:clickable="true"
-                android:background="@android:color/transparent"
-                app:layout_collapseMode="parallax"
-                />
-
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -79,23 +68,14 @@
         app:layout_anchorGravity="bottom|right|end">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab_play_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:clickable="true"
-        android:src="@android:color/transparent"
+        android:src="@drawable/ic_play_arrow"
+        android:tint="@android:color/white"
         />
-
-    <TextView
-        android:id="@+id/floatRating_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="9.2"
-        android:elevation="16dp"
-        android:textColor="@android:color/white"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -10,7 +10,9 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="10dp"
         android:textColor="@android:color/black"
-        android:text="Rating"/>
+        android:text="Rating"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
 
 
     <TextView
@@ -20,7 +22,8 @@
         android:layout_below="@id/list_item_head"
         android:text="list_content"
         android:layout_marginTop="10dp"
-        android:layout_marginLeft="16dp"/>
+        android:layout_marginLeft="16dp"
+        android:textSize="16dp"/>
 
 
 </RelativeLayout>
