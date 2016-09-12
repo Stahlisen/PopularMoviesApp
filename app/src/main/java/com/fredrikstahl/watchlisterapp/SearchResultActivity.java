@@ -55,7 +55,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(SearchResultViewHolder holder, int position) {
-
+        //Add comment
         }
 
         @Override
