@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.android.popularmoviesapp.TabPagerFragment">
+    tools:context=".TabPagerFragment">
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"
@@ -13,19 +13,25 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
 
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewpager"
+        <GridView
+            android:id="@+id/movieGridView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible"/>
+            android:layout_height="match_parent"
+            android:numColumns="2"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center">
+        </GridView>
     </LinearLayout>
 
 </LinearLayout>

@@ -1,18 +1,56 @@
 <resources>
-    <string name="app_name">PopularMoviesApp</string>
+    <string name="app_name">Watchlister</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
     <string name="title_activity_testacitivty">testacitivty</string>
-
-    <string-array name="themoviedb_api_show">
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-        <item></item>
-
-    </string-array>
     <string name="title_activity_start">StartActivity</string>
+
+    <string name="search_hint">Search titles and actors</string>
+    <string name="searchable_label">searchable</string>
+
+    <string-array name="tab_values_shows_tv">
+
+        <item>Trending</item>
+        <item>Best rated</item>
+        <item>On the air</item>
+    </string-array>
+
+    <string-array name="tab_values_shows_movie">
+        <item>Trending</item>
+        <item>Best rated</item>
+        <item>Coming soon</item>
+    </string-array>
+
+    <string-array name="api_params_tv">
+        <item>top_rated</item>
+        <item>popular</item>
+        <item>on_the_air</item>
+    </string-array>
+
+    <string-array name="api_params_movie">
+        <item>top_rated</item>
+        <item>popular</item>
+        <item>upcoming</item>
+    </string-array>
+
+    <!-- api parameter values -->
+    <string name="api_param_best_rated">top_rated</string>
+    <string name="api_param_trending">popular</string>
+    <string name="api_param_coming_soon">upcoming</string>
+    <string name="api_param_on_the_air">on_the_air</string>
+
+    <!-- tab names -->
+    <string name="tab_value_shows_trending">Trending</string>
+    <string name="tab_value_shows_best_rated">Best rated</string>
+    <string name="tab_value_shows_coming_soon">Coming soon</string>
+
+    <!-- show type -->
+    <string name="show_type_param">showtype</string>
+    <string name="show_type_value_tv">tv</string>
+    <string name="show_type_value_movie">movie</string>
+    <string name="title_activity_search_result">SearchResultActivity</string>
+
+
 </resources>
