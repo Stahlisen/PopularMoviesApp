@@ -1,4 +1,4 @@
-package com.fredrikstahl.watchlisterapp;
+package com.fredrikstahl.watchlisterapp.Search;
 
 import android.app.SearchManager;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TextView;
+
+import com.fredrikstahl.watchlisterapp.R;
 
 public class SearchResultActivity extends AppCompatActivity {
 
