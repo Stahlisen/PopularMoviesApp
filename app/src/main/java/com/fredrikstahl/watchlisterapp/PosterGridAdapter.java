@@ -52,7 +52,7 @@ public class PosterGridAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater inflater = ((StartActivity)mContext).getLayoutInflater();
+        LayoutInflater inflater = LayoutInflater.from(mContext);
 
         View gridView;
         ImageView posterImageView;

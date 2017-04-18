@@ -182,7 +182,6 @@ public class TabPagerFragment extends ShowsFragment {
             }
         });
 
-
     }
 
     @Override

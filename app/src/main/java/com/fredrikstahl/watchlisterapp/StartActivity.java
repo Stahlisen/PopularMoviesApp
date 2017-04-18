@@ -2,6 +2,7 @@ package com.fredrikstahl.watchlisterapp;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -13,9 +14,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.fredrikstahl.watchlisterapp.Model.Movie;
+import com.fredrikstahl.watchlisterapp.Search.SearchResultActivity;
+
+import java.io.Serializable;
 
 public class StartActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
@@ -123,11 +130,23 @@ public class StartActivity extends AppCompatActivity {
                     searchView.setIconified(true);
                 }
 
+                runSearchQuery(query);
+
                 return false;
             }
         });
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public void runSearchQuery(String query) {
+        Log.d("StartActivity", "runSearchQuery, query = " + query);
+        Intent searchResultIntent = new Intent(this, SearchResultActivity.class);
+        searchResultIntent.putExtra(SearchResultActivity.KEY_EXTRA_QUERY, query);
+
+        Log.d("StartActivity", "runSearchQuery, intent = " + searchResultIntent.getExtras());
+
+        startActivity(searchResultIntent);
     }
 
     @Override

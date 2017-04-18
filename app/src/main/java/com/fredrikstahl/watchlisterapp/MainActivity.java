@@ -42,13 +42,13 @@ public class MainActivity extends AppCompatActivity {
 
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         progressBar.setVisibility(View.VISIBLE);
-        /*
+
         if (savedInstanceState ==  null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new MovieGridFragment())
+                    .add(R.id.container, new TabPagerFragment())
                     .commit();
         }
-        */
+
         fmd = new FetchMovieData();
         fmd.execute();
 

@@ -67,7 +67,7 @@ public class MovieGridFragment extends Fragment {
             }
         });
 
-        String type = getArguments().getString("showType");
+        String type = "movie";//getArguments().getString("showType");
         movieList = new ArrayList<Movie>();//((MainActivity)getActivity()).getShowsData(type);
 
         Log.d(getClass().getSimpleName(), Integer.toString(movieList.size()));
